@@ -1,0 +1,15 @@
+<header class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div class="container">
+    <h4><b><%= link_to "D2Man", root_path, class:"badge badge-pill badge-primary" %></b></h4>
+    <nav>
+      <% if user_signed_in? %>
+        <ul class="navbar-nav">
+            <span style="color:white;" class="nav-item nav-link nav-text">Logged in as <strong><%= current_user.name %></strong>.</span>&nbsp;
+            <%= link_to "View reports", current_user, class: 'nav-item nav-link' %>
+            <%= link_to 'Edit user', edit_user_registration_path, class: 'nav-item nav-link' %> |
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-item nav-link'  %>
+        </ul>
+      <% end %>
+    </nav>
+  </div>
+</header>

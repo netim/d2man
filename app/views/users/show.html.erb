@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-12">
+    <% if @user.daily_reports.any? %>
+      <h5>Reports (<%= @user.daily_reports.count %>)</h5>
+      <table class="table table-bordered table-hover">
+        <% will_paginate @daily_reports %>
+        <thead>
+          <tr>
+            <td>Previous day report</td><td>Planned Activities for day</td><td>Impediments</td><td>Date</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @daily_reports.each do |dr| %>
+            <tr>
+                <td> <%= dr.prev_report %> </td>
+                <td> <%= dr.planned_act %> </td>
+                <td> <%= dr.impediments %> </td>
+                <td> <%= dr.created_at %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+        <% will_paginate @daily_reports %>
+      </table>
+    <% end %>
+  </div>
+</div>

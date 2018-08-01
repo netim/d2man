@@ -1,0 +1,42 @@
+  <div class="row">
+    <aside class="col-md-12">
+      <% if current_user.admin? %>
+        <table class="table table-bordered table-hover">
+          <% will_paginate @users %>
+          <thead>
+            <tr>
+              <td>Team</td><td>Name</td><td>Previous day report</td><td>Planned activities for the day</td><td>Impediments</td><td>Date</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <% if user != current_user %>
+
+              <% current_user.team_admin.each do |utn| %>
+                  <tr>
+                    <% user.teams.each do |teams| %>
+                      <% if teams.team_name_id == utn.team_name_id %>
+                        <% user.daily_reports.each do |udr| %>
+                          <td> <%= @team_names.find(utn.team_name_id).name %> </td>
+                          <td> <%= user.name %> </td>
+                          <td> <%= udr.prev_report %> </td>
+                          <td> <%= udr.planned_act %> </td>
+                          <td> <%= udr.impediments %> </td>
+                          <td> <%= udr.created_at %> </td>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  </tr>
+                <% end %>
+              <% end %>
+            <% end %>
+          </tbody>
+          <% will_paginate @users %>
+        </table>
+      <% else %>
+      <section class="daily_report_form">
+        <%= render 'shared/daily_report_form' %>
+      </section>
+      <% end %>
+    </aside>
+  </div>

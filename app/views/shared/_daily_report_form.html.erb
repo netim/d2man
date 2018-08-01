@@ -1,0 +1,11 @@
+<%= simple_form_for(@daily_report) do |f| %>
+<div class="form-group">
+  <%= render 'shared/error_messages', object: f.object %>
+    <%= f.label :prev_report, 'Previous day report' %>
+    <%= f.input :prev_report, as: :text, label: false %>
+    <%= f.label :planned_act, 'Planned activities for the day' %>
+    <%= f.input :planned_act, as: :text, label: false %>
+    <%= f.input :impediments, as: :text %>
+  <%= f.submit "Add report", class: "btn btn-primary" %>
+</div>
+<% end %>

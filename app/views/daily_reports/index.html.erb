@@ -1,0 +1,9 @@
+
+<%= will_paginate %>
+<ul class="users">
+  <% @users.each do |user| %>
+    <%= render daily_reports %>
+  <% end %>
+</ul>
+
+<%= will_paginate %>

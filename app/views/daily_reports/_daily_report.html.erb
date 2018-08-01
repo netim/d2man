@@ -1,0 +1,7 @@
+<li id="daily_report-<%= daily_report.id %>">
+  <span class="user"><%= link_to daily_report.user.name, daily_report.user %></span>
+  <span class="content"><%= daily_report.prev_report %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(daily_report.created_at) %> ago.
+  </span>
+</li>
